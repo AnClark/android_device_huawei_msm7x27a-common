@@ -18,8 +18,10 @@ TARGET_CORTEX_CACHE_LINE_32 := true
 TARGET_USE_SPARROW_BIONIC_OPTIMIZATION := true
 
 # Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+# AnClark MOD: TARGET_GLOBAL_CFLAGS and TARGET_GLOBAL_CPPFLAGS are not allowed in Soong build system,
+#              otherwise error "TARGET_GLOBAL_CFLAGS does not match between Make and Soong" will occur.
+#TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_7X27A_HARDWARE
 COMMON_GLOBAL_CFLAGS += -DGENLOCK_IOC_DREADLOCK -DANCIENT_GL -DQCOM_ICS_COMPAT
 
@@ -38,7 +40,8 @@ TARGET_USE_HUAWEI_LIBLIGHTS := true
 #BOARD_HAVE_QCOM_FM := true
 #BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO -DFM_RADIO
 
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/msm7x27a-common/include
+# AnClark MOD: Some header files may conflict with Omni 8.1
+#TARGET_SPECIFIC_HEADER_PATH := device/huawei/msm7x27a-common/include
 
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 

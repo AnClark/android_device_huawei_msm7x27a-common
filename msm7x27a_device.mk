@@ -145,5 +145,8 @@ PRODUCT_COPY_FILES += \
     device/huawei/msm7x27a-common/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
     device/huawei/msm7x27a-common/keylayout/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl
 
-$(call inherit-product, build/target/product/full.mk)
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+# AnClark MOD: Do not include full.mk since it includes unrelevant Emulator (Goldfish) targets,
+#              which seems to be pruned in Minimal Manifest TWRP.
+#              Bypassing them won't affect building TWRP.
+#$(call inherit-product, build/target/product/full.mk)
+#$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
